@@ -1,3 +1,8 @@
 Non-VC/
+<<<<<<< HEAD
 mongodb.msi
+=======
+MongoDB
+MongoDB-beta/
+>>>>>>> master
 .ini
