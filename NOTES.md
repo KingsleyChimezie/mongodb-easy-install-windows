@@ -1,6 +1,9 @@
 # NOTES:
-### The following notes are notes that were writen for myself as a reference point to my discoveries or useful information.
+    The following notes are notes that were writen for myself as a reference point to my discoveries or useful information.
 
+> ## 2017-11-11 
+* Discovered that tabs / white spaces within variables are affective. Caused problems with a directory link. Issue resolved after discovery
+   
 > ## 2017-11-10   
 * CALL command has a return - it will return a function as long as there is no EXIT command within the function. 
 
@@ -31,6 +34,8 @@ Recommended Installation locations:
 - Installed and uninstalled on Network Drive
 
 > ## References
+
+### 2017-11-08
 1. The Silent Install options for the Windows installer (msiexec)   
 http://www.silentinstall.org/msiexec
 
