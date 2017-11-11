@@ -30,7 +30,6 @@ Recommended Installation locations:
 - Installed and uninstalled on DropBox
 - Installed and uninstalled on Network Drive
 
----
 > ## References
 1. The Silent Install options for the Windows installer (msiexec)   
 http://www.silentinstall.org/msiexec
