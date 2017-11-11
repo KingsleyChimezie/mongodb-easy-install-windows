@@ -1,4 +1,12 @@
 # NOTES:
+### The following notes are notes that were writen for myself as a reference point to my discoveries or useful information.
+
+> ## 2017-11-10   
+* CALL command has a return - it will return a function as long as there is no EXIT command within the function. 
+
+* EXIT will terminate the script, EXIT /B 0 is the added to close off the function.
+
+* GOTO command will go to a function and not return to where it was initiated.
 
 > ## 2017-11-08
 NB
@@ -22,13 +30,13 @@ Recommended Installation locations:
 - Installed and uninstalled on DropBox
 - Installed and uninstalled on Network Drive
 
-## References
+---
+> ## References
 1. The Silent Install options for the Windows installer (msiexec)   
 http://www.silentinstall.org/msiexec
 
 2. Install MongoDB Community Edition on Windows   
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
-
 
 3. Take Command / TCC Help v. 21   
 https://jpsoft.com/help/rem.htm
