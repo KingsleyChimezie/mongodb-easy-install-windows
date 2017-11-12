@@ -34,6 +34,7 @@ REM :: Initialise variables
     SET restartMessage=* PC Restart Recommended *
     SET waitTime=2
     SET endOfProgramMessage=END OF PROGRAM, PRESS ANY KEY TO QUIT...
+    SET runMongodbBAT=mongodb-easy-run.bat
     SET bitbucketRepo=https://goo.gl/GjscTi
     SET githubRepo=https://goo.gl/LHF5aB
 )
@@ -220,29 +221,47 @@ IF EXIST !mongodbROOT! (
 :StartMongo
 (
     cd !binDIRpath! & ECHO. & ECHO.
-
     net start !mongodbPublisherName!
-    CALL :Wait
+    timeout /t 5 > nul
+    
     CALL :Header
     mongo
     CALL :Header
-    CALL :Wait
+    
     net stop !mongodbPublisherName!
-    REM sc delete mongodb
-
     CALL :Wait
     EXIT /B 0
 )
 
 :Completed
 (
-    cd !mongodbROOT! & ECHO & ECHO
+    cd !miscDIRpath!
     CALL :Header
-    ECHO BitBucket Repository: !bitbucketRepo!
-    ECHO BitBucket Repository: !bitbucketRepo!
-    timeout /t 5
-    START !bitbucketRepo!
-    START !bitbucketRepo!
+    
+    (REM :: Create Run file
+        echo @ECHO OFF
+        echo SETLOCAL EnableDelayedExpansion
+        echo cd !binDIRpath!
+        echo ECHO ----------------------------------------------------------- 
+        echo ECHO By Kingsley Chimezie - 08/Nov/2017                         
+        echo ECHO License: MIT                                               
+        echo ECHO -----------------------------------------------------------
+        echo ECHO.
+        echo net start !mongodbPublisherName!
+        echo ECHO.
+        echo mongo
+        echo ECHO.
+        echo net stop !mongodbPublisherName!
+    ) > !runMongodbBAT!
+
+    REM :: Open repositories
+    (
+        ECHO BitBucket  Repository:     !bitbucketRepo!
+        ECHO GitHub     Repository:     !githubRepo!
+        ECHO. & timeout /t 10
+        START !bitbucketRepo!
+        START !githubRepo!
+    )
     EXIT /B 0
 )
 :: END ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS: Core
