@@ -7,177 +7,326 @@ REM :: License: MIT
 
 REM :: Initialise variables
 (
-    SET mongodbDIR=!cd!
-    SET mongoExists=!mongodbDIR!\bin\mongo.exe
-    SET miscDIRname=MISC
-    SET miscDIR=!mongodbDIR!\MISC
-    SET dataDIRname=data
-    SET dataDIR=!mongodbDIR!\data
-    SET dbDIRname=db
-    SET dbDIR=!dataDIR!\db
-    SET logDIRname=log
-    SET logDIR=!dataDIR!\log
+    SET mongodbROOT=!cd!
+    SET mongoEXEpath=!mongodbROOT!\bin\mongo.exe
+    SET mongodEXEpath=!mongodbROOT!\bin\mongod.exe
+    SET binDIRpath=!mongodbROOT!\bin
     SET mongodbMSI=mongodb.msi
-    SET msiLogFile=MSI-log.txt
+    SET mongodbMSIpath=!mongodbROOT!\!mongodbMSI!
+    REM :: CREATED DIRs
+    SET miscDIRname=MISC
+    SET miscDIRpath=!mongodbROOT!\MISC
+    SET dataDIRname=data
+    SET dataDIRpath=!mongodbROOT!\data
+    SET dbDIRname=db
+    SET dbDIRpath=!dataDIRpath!\db
+    SET logDIRname=log
+    SET logDIRpath=!dataDIRpath!\log
+    REM :: CREATED FILES
+    SET msiTXT=msi.txt
+    SET msiTXTpath=!miscDIRpath!\!msiTXT!
+    SET mongodLOG=mongod.log
+    SET mongodLOGpath=!logDIRpath!\!mongodLOG!
+    SET mongodCFG=mongod.cfg
+    SET mongodCFGpath=!miscDIRpath!\!mongodCFG!
+    REM :: MISC
+    SET mongodbPublisherName=MongoDB
     SET restartMessage=* PC Restart Recommended *
+    SET waitTime=2
     SET endOfProgramMessage=END OF PROGRAM, PRESS ANY KEY TO QUIT...
-    SET mongoConfigFile=mongod.cfg
     SET bitbucketRepo=https://goo.gl/GjscTi
     SET githubRepo=https://goo.gl/LHF5aB
 )
-REM echo TEST ZONE ------------------------
-REM ECHO !mongodbDIR!
-REM ECHO !mongoExists!
-REM ECHO !miscDIRname!
-REM ECHO !miscDIR!
-REM ECHO !dataDIRname!
-REM ECHO !dataDIR!
-REM ECHO !dbDIRname!
-REM ECHO !dbDIR!
-REM ECHO !logDIRname!
-REM ECHO !logDIR!
-REM echo TEST ZONE ------------------------
+
+REM echo TEST ZONE ------------------------ & echo.
+
+REM echo TEST ZONE ------------------------ & echo.
 REM PAUSE
 
-REM :: Start of Program
-IF EXIST !mongodbDIR! (
-    CALL :Header & cd !mongodbDIR!
+REM :: START OF PROGRAM
+CALL :Header
+IF EXIST !mongodbROOT! (
+    cd !mongodbROOT!
 
-    :: Check if mongodb is already installed in directory
-    IF EXIST !mongoExists! (
+    REM :: Check if mongodb is already installed in directory
+    IF EXIST !mongoEXEpath! (
         CALL :UninstallOrExit
     )
-    CALL :MongoSetup        REM :: Must be before InstallMongo due to MISC
-    CALL :InstallMongo
-    CALL :MongoPathSetup
+
+    REM :: "mongodb.msi" installer does not exists
+    IF NOT EXIST !mongodbMSIpath! (
+        CALL :NoInstaller
+    )
+    
+    REM :: CORE FUNCTIONS
+    (   
+        CALL :CreateDIRS        REM :: Must be before InstallMongo due to MISC dir
+        CALL :InstallMongo
+        CALL :SetupMongo
+        CALL :StartMongo
+        CALL :Completed
+    )
     ECHO !restartMessage!
     CALL :EOP
-
+    
 ) ELSE (
-    ECHO Unknown Directory Error...
+    CLS & ECHO. Unknown Directory Error...
     CALL :EOP
 )
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS
-:UninstallOrExit REM :: UNINSTALL MONGO OR EXIT PROGRAM
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS: Core
+:CreateDIRS REM :: DIRECTORIES
 (
-    SET confirm=0
-    CALL :Header
-    SET /p "confirm=MongoDB is already installed, Would you like uninstall? (Y/N): "
-    IF !confirm!==Y GOTO :UninstallMongo
-    IF !confirm!==y GOTO :UninstallMongo
-    IF !confirm!==N CALL :EOP
-    IF !confirm!==n CALL :EOP
-    GOTO :UninstallOrExit           REM :: any input other than: y Y n N
-    EXIT /B 0
-)
-:UninstallMongo REM :: MONGO UNINSTALLATION
-(
-        ECHO. & ECHO. & cd !mongodbDIR!
-        ECHO Uninstalling MongoDB from: !mongodbDIR! & ECHO. & ECHO.
-        
-        REM :: Uninstall MongoDB
-        msiexec.exe /x !mongodbMSI! UNINSTALLLOCATION=!mongodbDIR! ADDLOCAL="All" /passive /norestart
-
-        REM :: MongoDB still exists or not after uninstallation?
-        IF EXIST !mongoExists! (
-            ECHO UNSUCCESSFUL UNINSTALLATION 
-            ECHO.
-        )
-        IF NOT EXIST !mongoExists! (
-            ECHO SUCCESSFUL UNINSTALLATION 
-            ECHO.
-            ECHO !restartMessage!
-        ) 
-    )
-    CALL :EOP
-    EXIT /B 0
-)
-
-:MongoSetup REM :: MONGO SETUP
-(
-    ECHO ENVIRONMENT STATUS & ECHO.
+    cd !mongodbROOT!
+    ECHO. & ECHO * DIRECTORIES STATUS * & ECHO.
     REM :: Setting up MongoDB environment.
     (
         :DIR1 REM :: create MISC directory (\MISC)
-        IF NOT EXIST !miscDIR! (
-            cd !mongodbDIR!
+        IF NOT EXIST !miscDIRpath! (
+            cd !mongodbROOT!
             mkdir !miscDIRname!
-            ECHO CREATED:   !miscDIR!
+            ECHO DIRECTORY CREATED:   !miscDIRpath!
             GOTO :DIR2
         )
-        ECHO EXISTS:    !miscDIR!
+        ECHO DIRECTORY EXISTS:    !miscDIRpath!
 
         :DIR2 REM :: create data directory (\data)
-        IF NOT EXIST !dataDIR! (
-            cd !mongodbDIR!
+        IF NOT EXIST !dataDIRpath! (
+            cd !mongodbROOT!
             mkdir !dataDIRname!
-            ECHO CREATED:   !dataDIR!
+            ECHO DIRECTORY CREATED:   !dataDIRpath!
             GOTO :DIR3 
         )
-        ECHO EXISTS:    !dataDIR!
+        ECHO DIRECTORY EXISTS:    !dataDIRpath!
 
         :DIR3 REM :: create db directory (\data\db)
-        IF NOT EXIST !dbDIR! (
-            cd !dataDIR!
+        IF NOT EXIST !dbDIRpath! (
+            cd !dataDIRpath!
             mkdir !dbDIRname!
-            ECHO CREATED:   !dbDIR!
+            ECHO DIRECTORY CREATED:   !dbDIRpath!
             GOTO :DIR4 
         )
-        ECHO EXISTS:    !dbDIR!
+        ECHO DIRECTORY EXISTS:    !dbDIRpath!
         
         :DIR4 REM :: create log directory (\data\log)
-        IF NOT EXIST !logDIR! (
-            cd !dataDIR!
+        IF NOT EXIST !logDIRpath! (
+            cd !dataDIRpath!
             mkdir !logDIRname!
-            ECHO CREATED:   !logDIR!
+            ECHO DIRECTORY CREATED:   !logDIRpath!
+            ECHO. & ECHO.
             EXIT /B 0 REM :: EXIT Function MongoSetup
         )
-        ECHO EXISTS:    !logDIR!
+        ECHO DIRECTORY EXISTS:    !logDIRpath!
+    )
+    ECHO. & ECHO.
+    EXIT /B 0
+)
+
+
+:InstallMongo REM :: MONGO INSTALLTION
+(
+    cd !mongodbROOT!        
+    ECHO * INSTALLING MONGO * & ECHO.
+
+    REM :: "mongodb.msi" installer does not exists
+    IF NOT EXIST !mongodbMSI! (
+        CALL :NoInstaller
+    )
+
+    ECHO Installing MongoDB in:
+    ECHO !mongodbROOT! 
+    ECHO.
+    
+    REM :: Install MongoDB and msi.txt
+    msiexec.exe /i !mongodbMSI! /l*v !msiTXTpath! INSTALLLOCATION=!mongodbROOT! ADDLOCAL="All" /passive /norestart
+    
+    CALL :Wait
+    REM :: MongoDB exists or not after installation?
+    IF EXIST !mongoEXEpath! (
+        ECHO * Successful Installation * & ECHO. & ECHO.
+    )
+    IF NOT EXIST !mongoEXEpath! (
+        ECHO * Unsuccessful Installation * & ECHO. & ECHO.
+        CALL :IsMongoAvailiable
+    )
+    REM :: msi.txt exists after installation?
+    IF EXIST !msiTXTpath! (
+        ECHO MSI Log File Created: 
+        ECHO !msiTXTpath!
+        ECHO.
     )
     EXIT /B 0
 )
-       
-:InstallMongo REM :: MONGO INSTALLTION
-(
-    ECHO. & ECHO. & cd !mongodbDIR!        
-    
-    REM :: var "mongodbMSI" exists
-    IF EXIST !mongodbMSI! (
-        ECHO Installing MongoDB in: !mongodbDIR! & ECHO. & ECHO.
+
+
+:SetupMongo REM :: SETUP MONGODB
+(   
+    cd !miscDIRpath!
+    ECHO. & ECHO * SETTING UP MONGO * & ECHO.
+    CALL :Wait 
+    (REM :: Mongo Configuration
         
-        REM :: Install MongoDB and msilog.txt
-        msiexec.exe /i !mongodbMSI! /l*v !miscDIR!\!msiLogFile! INSTALLLOCATION=!mongodbDIR! ADDLOCAL="All" /passive /norestart
-        
-        REM :: MongoDB still exists or not after installation?
-        IF EXIST !mongoExists! (
-            ECHO SUCCESSFUL INSTALLATION 
+        (REM :: Create Config file
+            echo systemLog:
+            echo     destination: file
+            echo     path: !mongodLOGpath!
+            echo     logAppend: true
+            echo storage:
+            echo     dbPath: !dbDIRpath!
+            echo     directoryPerDB: true
+            echo net:
+            echo     bindIp: 127.0.0.1
+            echo     port: 27017
+        ) > !mongodCFG!
+
+        REM :: Config file exist
+        IF EXIST !mongodCFG! (
+            ECHO Mongo Config File Created: 
+            ECHO !mongodCFGpath!
             ECHO.
+        ) ELSE (
+            ECHO Could Not Create Mongo Config File Created:
+            ECHO !mongodCFGpath!
+            ECHO Setting up basic environment instead...
+            "!mongodEXEpath!" --dbpath "!dbDIRpath!"
+            ECHO.
+            CALL :EOP
         )
-        IF NOT EXIST !mongoExists! (
-            ECHO UNSUCCESSFUL INSTALLATION 
-            ECHO.
+
+    )
+
+    REM :: MongoDB Service Setup
+    (
+        cd !binDIRpath!
+
+        REM :: Start the MongoDB service
+        ECHO. & ECHO MongoDB Service Setup
+        ECHO -----------------------------------------------------------
+        CALL :Wait
+        REM :: Delete previous
+        ECHO Deleting Any Previous MongoDB Service: & ECHO.
+        REM sc.exe delete MongoDB
+        sc.exe delete MongoDB binPath= "\"!mongodEXEpath!\" --service --config=\"!mongodCFGpath!\"" DisplayName= "MongoDB" start= "auto"
+        ECHO.
+        ECHO.
+        REM  :: Create New
+        ECHO Creating New MongoDB Service: & ECHO.
+        sc.exe create MongoDB binPath= "\"!mongodEXEpath!\" --service --config=\"!mongodCFGpath!\"" DisplayName= "MongoDB" start= "auto" 
+        ECHO ----------------------------------------------------------- & ECHO.
+        CALL :Wait
+    )
+    EXIT /B 0
+)
+
+:StartMongo
+(
+    cd !binDIRpath! & ECHO. & ECHO.
+
+    net start !mongodbPublisherName!
+    CALL :Wait
+    CALL :Header
+    mongo
+    CALL :Header
+    CALL :Wait
+    net stop !mongodbPublisherName!
+    REM sc delete mongodb
+
+    CALL :Wait
+    EXIT /B 0
+)
+
+:Completed
+(
+    cd !mongodbROOT! & ECHO & ECHO
+    CALL :Header
+    ECHO BitBucket Repository: !bitbucketRepo!
+    ECHO BitBucket Repository: !bitbucketRepo!
+    timeout /t 5
+    START !bitbucketRepo!
+    START !bitbucketRepo!
+    EXIT /B 0
+)
+:: END ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS: Core
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS: Secondary
+:UninstallOrExit REM :: UNINSTALL MONGO OR EXIT PROGRAM
+(
+    cd !mongodbROOT!
+
+    REM :: "mongodb.msi" installer does not exists
+    IF NOT EXIST !mongodbMSI! (
+        CALL :NoInstaller
+    )
+    
+    SET confirm=0
+    SET /p "confirm=MongoDB is already installed, Would you like uninstall? (Y/N): "
+    ECHO.
+    IF !confirm!==Y CALL :Header & GOTO :UninstallMongo
+    IF !confirm!==y CALL :Header & GOTO :UninstallMongo
+    IF !confirm!==N CALL :EOP
+    IF !confirm!==n CALL :EOP
+    GOTO :UninstallOrExit           REM :: any input other than: y Y n N
+
+    :UninstallMongo REM :: MONGO UNINSTALLATION
+    (
+        cd !mongodbROOT!
+        ECHO. & ECHO * UNINSTALLING MONGO * & ECHO.
+        ECHO Uninstalling MongoDB from:
+        ECHO !mongodbROOT! 
+        ECHO.
+        
+        REM :: Uninstall MongoDB
+        msiexec.exe /x !mongodbMSI! UNINSTALLLOCATION=!mongodbROOT! ADDLOCAL="All" /passive /norestart
+
+        CALL :Wait
+        REM :: MongoDB still exists or not after uninstallation?
+        IF EXIST !mongoEXEpath! (
+            ECHO * Unsuccessful Unstallation * & ECHO. & ECHO.
+            CALL :IsMongoAvailiable
+        )
+        IF NOT EXIST !mongoEXEpath! (
+            ECHO * Successful Unstallation * & ECHO. & ECHO.
+            ECHO !restartMessage!
         ) 
-    )ELSE ( REM :: var "mongodbMSI" does not exists
-        ECHO ERROR - MISSING OR INVALID INSTALLER FILE: & ECHO.
-        ECHO 1. Download MongoDB to the same location as this program:
-        ECHO    !mongodbDIR! & ECHO.
-        ECHO 2. The downloaded file name and extension must be:  "!mongodbMSI!"
         CALL :EOP
     )
 )
+:: END ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS: Secondary
 
-:MongoPathSetup REM :: MONGO PATH SETUP
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS: Checks, Warnings & Errors
+:NoInstaller REM :: "mongodb.msi" installer does not exists
 (
-    ECHO ACCESSED MongoPathSetup
+    ECHO ERROR - MISSING OR INVALID INSTALLER FILE & ECHO.
+    ECHO 1. Download MongoDB to the same location as this program:
+    ECHO    !mongodbROOT! & ECHO.
+    ECHO 2. The downloaded file name and extension must be:  "!mongodbMSI!"
+    CALL :EOP
+    EXIT /B 0
 )
 
-:EOP REM :: End of Program
+:IsMongoAvailiable REM :: Call due to Unsuccessful installation or uninstallion
 (
+    REM :: Checks System programs for MongoDB
+    ECHO Checking If "!mongodbPublisherName!" Is Available On This PC... & ECHO.
+    ECHO ----------------------------------------------------------- 
+    wmic product where "Vendor like '!mongodbPublisherName!'" get Name, Version
     ECHO.
-    ECHO -----------------------------------------------------------
-    ECHO !endOfProgramMessage! & PAUSE >nul & EXIT
+    ECHO To Resolve Unsuccessful Installation OR Uninstallion, Please Try:
+    ECHO.
+    ECHO 1.     Uninstall "!mongodbPublisherName!" From Windows Control Panel and Retry this program
+    ECHO.
+    ECHO 2.     Delete OR Re-add "!mongodbPublisherName!" bin Directory and Retry this program:
+    ECHO.
+    ECHO        !mongodbROOT!\bin
+    ECHO ----------------------------------------------------------- & ECHO.
+    CALL :Wait
+    EXIT /B 0
 )
+:: END ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS: Checks, Warnings & Errors
 
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS: Displays & Exit
 :Header REM :: Header information - clears screen (new screen)
 (
     CLS
@@ -188,4 +337,18 @@ IF EXIST !mongodbDIR! (
     ECHO -----------------------------------------------------------& ECHO.
     EXIT /B 0
 )
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS
+
+:Wait REM :: Creates a halt of display - define to variable
+(
+    ECHO %time% > NUL & timeout !waitTime! > NUL & echo %time% > NUL
+    EXIT /B 0
+)
+
+:EOP REM :: End of Program
+(
+    ECHO.
+    ECHO -----------------------------------------------------------
+    ECHO !endOfProgramMessage! & PAUSE >nul & EXIT
+)
+:: END ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: FUNCTIONS: Displays & Exit
+
