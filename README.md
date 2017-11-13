@@ -11,7 +11,7 @@ MongoDB installation and environment setup on Windows OS (Windows 7 and above), 
 
 
 > ## __Instructions__ ##
-1.  ### Create a folder path of your choice, on your PC, where you want to install & setup MongoDB ###
+1. ### Create a folder path of your choice, on your PC, where you want to install & setup MongoDB ###
 
         Example:    "C:\myMongoDB"
 
