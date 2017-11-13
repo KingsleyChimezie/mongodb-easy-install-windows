@@ -35,8 +35,9 @@ REM :: Initialise variables
     SET waitTime=2
     SET endOfProgramMessage=END OF PROGRAM, PRESS ANY KEY TO QUIT...
     SET runMongodbBAT=mongodb-easy-run.bat
-    SET bitbucketRepo=https://goo.gl/GjscTi
-    SET githubRepo=https://goo.gl/LHF5aB
+    SET bitbucketRepo=https://goo.gl/2U17Bq
+    SET githubRepo=https://goo.gl/JSpvQp
+    SET githubGist=https://goo.gl/JRgGcm
 )
 
 REM echo TEST ZONE ------------------------ & echo.
@@ -258,9 +259,11 @@ IF EXIST !mongodbROOT! (
     (
         ECHO BitBucket  Repository:     !bitbucketRepo!
         ECHO GitHub     Repository:     !githubRepo!
+        ECHO GitHub     Repository:     !githubGist!
         ECHO. & timeout /t 10
         START !bitbucketRepo!
         START !githubRepo!
+        START !githubGist!
     )
     EXIT /B 0
 )
