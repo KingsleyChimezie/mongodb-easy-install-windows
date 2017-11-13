@@ -2,7 +2,7 @@
 MongoDB installation and environment setup on Windows OS (Windows 7 and above), using a batch (.bat) script.
 
 
-> ## __Prerequisites__ ##
+## __Prerequisites__ ##
 * OS - Windows 7 and above
 * Internet access
 * MongoDB installer file
@@ -10,7 +10,7 @@ MongoDB installation and environment setup on Windows OS (Windows 7 and above), 
 
 
 
-> ## __Instructions__ ##
+## __Instructions__ ##
 1. ### Create a folder path of your choice, on your PC, where you want to install & setup MongoDB ###
 
         Example:    "C:\myMongoDB"
@@ -44,7 +44,7 @@ MongoDB installation and environment setup on Windows OS (Windows 7 and above), 
 
 
 
-> ## __Versions__ ##
+## __Versions__ ##
 ### Current Version ###
 * __Version 1.0__ | (2017-11-12)
 
@@ -53,24 +53,24 @@ MongoDB installation and environment setup on Windows OS (Windows 7 and above), 
 
 
 
-> ## __License__ ##
+## __License__ ##
 * MIT 
 
 
 
-> ## __Author(s)__ ##
+## __Author(s)__ ##
 | Name              	| Contribution                                   	| Website                  	|
 |-------------------	|------------------------------------------------	|--------------------------	|
 | Kingsley Chimezie 	| Initial development and repository management  	| http://www.kingsley.tech 	|
 
 
 
-> ## __Acknowledgments__ ##
+## __Acknowledgments__ ##
 * NULL
 
 
 
-> ## __References__ ##
+## __References__ ##
 
 ### Key References: ###
 * Install MongoDB Community Edition on Windows   
