@@ -1,4 +1,5 @@
 Non-VC/
-NOTES.md
+.vscode/
+*NOTES.md
 mongodb.msi
-.ini
+*.ini

@@ -16,7 +16,7 @@ MongoDB installation and environment setup on Windows OS (Windows 7 and above), 
         Example:    "C:\myMongoDB"
 
 
-1. ### Download MongoDB installer file (.msi), to the folder you just created ###
+2. ### Download MongoDB installer file (.msi), to the folder you just created ###
 
         Example:    "C:\myMongoDB\downloaded-mongodb-installer.msi"
     
@@ -25,36 +25,38 @@ MongoDB installation and environment setup on Windows OS (Windows 7 and above), 
         https://www.mongodb.com/download-center?jmp=nav#community   
 
 
-1. ### Download mongodb-easy-install-windows tool, to the created folder on your PC ###
+3. ### Download "mongodb-easy-install-windows.bat" tool, to the created folder from step 1.   
 
         Example:    "C:\myMongoDB\mongodb-easy-install-windows.bat"
 
-    mongodb-easy-install-windows tool Download links:  
+* The "mongodb-easy-install-windows.bat" tool can be downloaded from "src" folder in the __BitBucket__ and __GithHub__ repositories, or from __GitHubGist__ (See links below) 
     
-        - BitBucket (master branch):    https://goo.gl/2U17Bq  
-        - GitHub (master branch):       https://goo.gl/JSpvQp  
-        - GitHubGist:                   https://goo.gl/JRgGcm
+        - BitBucket repository (master branch):    https://goo.gl/2U17Bq  
+        - GitHub repository (master branch):       https://goo.gl/JSpvQp  
+        - GitHubGist:                              https://goo.gl/JRgGcm
 
 
-1. ### Rename MongoDB installer file in the created folder to - __mongodb__ ###
+4. ### Rename MongoDB installer file (from step 2) in the created folder to - __mongodb__ ###
 
-        Example:    "C:\myMongoDB\mongodb.msi"
+        Example:
+                Original    "C:\myMongoDB\downloaded-mongodb-installer.msi"
+                Renamed     "C:\myMongoDB\mongodb.msi"
 
-1. ### Run (double click) the mongodb-easy-install-windows tool!
 
-
-
-## __Versions__ ##
-### Current Version ###
-* __Version 1.0__ | (2017-11-12)
-
-### Other Versions ###
-* NULL
+5. ### Run (double click) the "mongodb-easy-install-windows.bat" tool.
+* You can rename the "mongodb-easy-install-windows.bat" to whatever you like - this will not cause error.
 
 
 
 ## __License__ ##
-* MIT 
+* MIT - Copyright (c) 2017 Kingsley Chimezie
+
+
+
+## __Versions__ ##
+| Version No.   	| Release Date 	|
+|---------------	|--------------	|
+| 1.0 (current) 	| 2017-11-12   	|
 
 
 
