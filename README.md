@@ -94,7 +94,7 @@ https://stackoverflow.com/questions/1482739/batch-file-to-get-specific-installed
 1. How to Create and Delete Files and Directories from Windows Command Prompt   
 https://www.wikihow.com/Create-and-Delete-Files-and-Directories-from-Windows-Command-Prompt
 
-1. Long commands split over multiple lines in Windows Vista batch (.bat) file
+1. Long commands split over multiple lines in Windows Vista batch (.bat) file  
 https://stackoverflow.com/questions/69068/long-commands-split-over-multiple-lines-in-windows-vista-batch-bat-file
 
 #### 2017-11-08 ####
