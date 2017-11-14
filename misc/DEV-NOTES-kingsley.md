@@ -1,8 +1,8 @@
-# NOTES:
-    The following notes are notes that were writen for myself as a reference point to my discoveries or useful information.
+# DEVELOPMENT NOTES - by Kingsley Chimezie #
+## The following notes are notes that were writen for myself as a reference point to my discoveries or useful information. ##
 
 
-> ## 2017-11-12 
+## 2017-11-12 ##
 * EXIT /B 0 must be added to end of any function if you wish to return back to caller.   
 
 * N.B. - Functions and statements (IF, FOR, ELSE) don't work when bracket is right next to name on a new line.
@@ -20,7 +20,7 @@
     __Answered by user "Helen" on Stackoverflow__
  
 
-> ## 2017-11-11
+## 2017-11-11 ##
 * Checks for valid .msi installer file path when (valid = "mongodb.msi"):
     1. The program initially starts
     1. Trying to install MongoDB
@@ -34,7 +34,7 @@
 * Discovered that tabs / white spaces within variables are affective. Caused problems with a directory link. Issue resolved after discovery
 
 
-> ## 2017-11-10   
+## 2017-11-10 ## 
 * CALL command has a return - it will return a function as long as there is no EXIT command within the function. 
 
 * EXIT will terminate the script, EXIT /B 0 is the added to close off the function.
@@ -42,7 +42,7 @@
 * GOTO command will go to a function and not return to where it was initiated.
 
 
-> ## 2017-11-08
+## 2017-11-08 ##
 - mongodb.msi and the batch files must be in the same directory as the copied path.
 - it installed funny when tested with user's directory: " C:\Users\username\ "
 
@@ -50,11 +50,11 @@ Recommended Installation locations:
 1. Root location of a drive - e.g. C:\ D:\ K:\ etc...
 
 
-### Not working:
+### Not working: ###
 - Doesn't install on Google drive
 - It won't work when .msi and .bat files in different folders to the coppied path
 
-### Working:
+### Working: ###
 - the installation msi filename can be changed
 - code works with path stored as a variable   
     "msiexec.exe /i mongodb.msi INSTALLLOCATION=!ChosenPath! ADDLOCAL="all" /passive /norestart"
@@ -64,7 +64,7 @@ Recommended Installation locations:
 - Installed and uninstalled on Network Drive
 
 
-> ## References
+## References ##
 
 ### __Key References:__ ###
 * Install MongoDB Community Edition on Windows   

@@ -1,5 +1,3 @@
-Non-VC/
+untracked/
 .vscode/
-*NOTES.md
-mongodb.msi
 *.ini
