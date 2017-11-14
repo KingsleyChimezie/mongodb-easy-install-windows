@@ -1,5 +1,9 @@
 # mongodb-easy-install-windows #
-MongoDB installation and environment setup on Windows OS (Windows 7 and above), using a batch (.bat) script.
+
+> ## Version 1.0 ##
+
+### Automatically install, configure and set up a MongoDB environment on Windows OS (Windows 7 and above) machine. Using the "mongodb-easy-install-windows" batch (.bat) script. ##
+
 
 
 ## __Prerequisites__ ##
@@ -11,16 +15,16 @@ MongoDB installation and environment setup on Windows OS (Windows 7 and above), 
 
 
 ## __Instructions__ ##
-1. ### Create a folder path of your choice, on your PC, where you want to install & setup MongoDB ###
+1. ### Create a folder path of your choice, on your PC, where you want to install and setup MongoDB ###
 
         Example:    "C:\myMongoDB"
 
 
-2. ### Download MongoDB installer file (.msi), to the folder you just created ###
+2. ### Download the latest MongoDB installer file (.msi), to the folder you just created ###
 
         Example:    "C:\myMongoDB\downloaded-mongodb-installer.msi"
     
-    MongoDB Download link: 
+* MongoDB installer file Download link: 
             
         https://www.mongodb.com/download-center?jmp=nav#community   
 
@@ -29,18 +33,21 @@ MongoDB installation and environment setup on Windows OS (Windows 7 and above), 
 
         Example:    "C:\myMongoDB\mongodb-easy-install-windows.bat"
 
-* The "mongodb-easy-install-windows.bat" tool can be downloaded from "src" folder in the __BitBucket__ and __GithHub__ repositories, or from __GitHubGist__ (See links below) 
+* The latest "mongodb-easy-install-windows.bat" tool can be downloaded from the ___"master"___ branch ___"src"___ folder - within the __BitBucket__ OR __GithHub__ repository.   
+OR   
+Independently from __GitHubGist__  
+(See links below) 
     
         - BitBucket repository (master branch):    https://goo.gl/2U17Bq  
         - GitHub repository (master branch):       https://goo.gl/JSpvQp  
         - GitHubGist:                              https://goo.gl/JRgGcm
 
 
-4. ### Rename MongoDB installer file (from step 2) in the created folder to - __mongodb__ ###
+4. ### Rename the MongoDB installer file (from step 2) in the created folder to - __mongodb__ ###
 
         Example:
-                Original    "C:\myMongoDB\downloaded-mongodb-installer.msi"
-                Renamed     "C:\myMongoDB\mongodb.msi"
+                Original path:    "C:\myMongoDB\downloaded-mongodb-installer.msi"
+                Renamed path:     "C:\myMongoDB\mongodb.msi"
 
 
 5. ### Run (double click) the "mongodb-easy-install-windows.bat" tool.
