@@ -1,6 +1,6 @@
 # mongodb-easy-install-windows #
 
-> ## Version 1.0 ##
+> * ## Version 1.0 ##
 
 ### Automatically install, configure and set up a MongoDB environment on Windows OS (Windows 7 and above) machine. Using the "mongodb-easy-install-windows" batch (.bat) script. ##
 
