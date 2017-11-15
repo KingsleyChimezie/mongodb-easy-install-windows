@@ -69,14 +69,14 @@ Independently from __GitHubGist__
 
 
 ---
-## __Project People__ ##      
+## __Project People__ ##
 | Rank              	| Name                	| Website                  	|
 |-------------------	|-------------------	|--------------------------	|
 | Author +        	| Kingsley Chimezie 	| http://www.kingsley.tech 	|
 
 
 
-### __Ranking__ ###    
+### __Ranking__ ###
 | Rank           	| Description                                                                   	| Access Group              	|
 |----------------	|-------------------------------------------------------------------------------	|---------------------------	|
 | Author +       	| Project creator and owner                                                     	| Admin                     	|
@@ -89,7 +89,7 @@ Independently from __GitHubGist__
 
 
 
-### __Access Group__ ###    
+### __Access Group__ ###
 | Access Group | Description                              |
 |--------------|------------------------------------------|
 | Admin        | Full control over project                |
