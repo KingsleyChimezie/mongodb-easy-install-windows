@@ -15,7 +15,7 @@
 
 
 ## __Instructions__ ##
-### YouTube Videos ###   
+### YouTube Videos ###
 | Description                                                                                                 | Link                         |
 |-------------------------------------------------------------------------------------------------------------|------------------------------|
 | MongoDB Easy Installation and Setup in 1 MINUTE! Free Tool for Windows - Part 1 - (Quick Demo)              | https://youtu.be/p2Tp9f4_MQk |
@@ -48,7 +48,7 @@ OR
 Independently from __GitHubGist__  
 (See links below) 
     
-        - BitBucket repository (master branch):    https://goo.gl/2U17Bq  
+        - BitBucket repository (master branch):    https://goo.gl/MC7zDD  
         - GitHub repository (master branch):       https://goo.gl/JSpvQp  
         - GitHubGist:                              https://goo.gl/JRgGcm
 

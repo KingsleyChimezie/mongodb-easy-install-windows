@@ -35,7 +35,7 @@ REM :: Initialise variables
     SET waitTime=2
     SET endOfProgramMessage=END OF PROGRAM, PRESS ANY KEY TO QUIT...
     SET runMongodbBAT=mongodb-easy-run.bat
-    SET bitbucketRepo=https://goo.gl/2U17Bq
+    SET bitbucketRepo=https://goo.gl/MC7zDD
     SET githubRepo=https://goo.gl/JSpvQp
     SET githubGist=https://goo.gl/JRgGcm
 )
