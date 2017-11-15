@@ -1,4 +1,3 @@
-mongodb-easymongodb
 mongodb-install
 mongo
 mongodb-database
