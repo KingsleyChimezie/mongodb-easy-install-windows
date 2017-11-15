@@ -15,12 +15,12 @@
 
 
 ## __Instructions__ ##
-1. ### Create a folder path of your choice, on your PC, where you want to install and setup MongoDB ###
+### 1. Create a folder path of your choice, on your PC, where you want to install and setup MongoDB ###
 
         Example:    "C:\myMongoDB"
 
 
-2. ### Download the latest MongoDB installer file (.msi), to the folder you just created ###
+### 2. Download the latest MongoDB installer file (.msi), to the folder you just created ###
 
         Example:    "C:\myMongoDB\downloaded-mongodb-installer.msi"
     
@@ -28,8 +28,9 @@
             
         https://www.mongodb.com/download-center?jmp=nav#community   
 
+* __N.B. It is recommended that you do not remove the MongoDB installer from the created folder even after installation__
 
-3. ### Download "mongodb-easy-install-windows.bat" tool, to the created folder from step 1.   
+### 3. Download "mongodb-easy-install-windows.bat" tool, to the created folder from step 1.   
 
         Example:    "C:\myMongoDB\mongodb-easy-install-windows.bat"
 
@@ -43,14 +44,14 @@ Independently from __GitHubGist__
         - GitHubGist:                              https://goo.gl/JRgGcm
 
 
-4. ### Rename the MongoDB installer file (from step 2) in the created folder to - __mongodb__ ###
+### 4. Rename the MongoDB installer file (from step 2) in the created folder to - __mongodb__ ###
 
         Example:
                 Original path:    "C:\myMongoDB\downloaded-mongodb-installer.msi"
                 Renamed path:     "C:\myMongoDB\mongodb.msi"
 
 
-5. ### Run (double click) the "mongodb-easy-install-windows.bat" tool.
+### 5. Run (double click) the "mongodb-easy-install-windows.bat" tool.
 * You can rename the "mongodb-easy-install-windows.bat" to whatever you like - this will not cause error.
 
 
@@ -80,35 +81,9 @@ Independently from __GitHubGist__
 
 
 ## __References__ ##
-
-### Key References: ###
 * Install MongoDB Community Edition on Windows   
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
 
 * MongoDB Core Reference (v3.4 used for project)  
 https://docs.mongodb.com/v3.4/reference/program/mongod/
 https://docs.mongodb.com/manual/reference/configuration-options/
-
-
-### Other References: ###
-
-#### 2017-11-12 ####
-1. wikiHow to Delay a Batch File   
-https://www.wikihow.com/Delay-a-Batch-File
-
-1. Batch file to get specific installed software along with version  
-https://stackoverflow.com/questions/1482739/batch-file-to-get-specific-installed-software-along-with-version
-
-#### 2017-11-10 ####
-1. How to Create and Delete Files and Directories from Windows Command Prompt   
-https://www.wikihow.com/Create-and-Delete-Files-and-Directories-from-Windows-Command-Prompt
-
-1. Long commands split over multiple lines in Windows Vista batch (.bat) file  
-https://stackoverflow.com/questions/69068/long-commands-split-over-multiple-lines-in-windows-vista-batch-bat-file
-
-#### 2017-11-08 ####
-1. The Silent Install options for the Windows installer (msiexec)   
-http://www.silentinstall.org/msiexec
-
-1. Take Command / TCC Help v. 21   
-https://jpsoft.com/help/rem.htm
