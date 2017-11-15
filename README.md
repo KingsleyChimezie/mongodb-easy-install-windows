@@ -48,7 +48,7 @@ OR
 Independently from __GitHubGist__  
 (See links below) 
     
-        - BitBucket repository (master branch):    https://goo.gl/2U17Bq  
+        - BitBucket repository (master branch):    https://goo.gl/MC7zDD  
         - GitHub repository (master branch):       https://goo.gl/JSpvQp  
         - GitHubGist:                              https://goo.gl/JRgGcm
 
