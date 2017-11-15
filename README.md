@@ -15,6 +15,14 @@
 
 
 ## __Instructions__ ##
+### YouTube Videos ###   
+| Description                                                                                                 | Link                         |
+|-------------------------------------------------------------------------------------------------------------|------------------------------|
+| MongoDB Easy Installation and Setup in 1 MINUTE! Free Tool for Windows - Part 1 - (Quick Demo)              | https://youtu.be/p2Tp9f4_MQk |
+| MongoDB Easy Installation and Setup in 1 MINUTE! Free Tool for Windows - Part 2 - (Full Demo Walkthrough)   |                              |
+| MongoDB Easy Installation and Setup in 1 MINUTE! Free Tool for Windows - Part 3 - (Source Code Walkthrough) |                              |
+
+### Written Guide ###
 ### 1. Create a folder path of your choice, on your PC, where you want to install and setup MongoDB ###
 
         Example:    "C:\myMongoDB"
@@ -65,7 +73,7 @@ N.B.
         
         Example:    "C:\myMongoDB\MISC\mongodb-easy-run.bat"
 
-* You can rename the "mongodb-easy-install-windows.bat" to whatever you like.
+* You can rename the "mongodb-easy-install-windows.bat" to whatever you like.   
 
 
 
