@@ -86,7 +86,7 @@ N.B.
 |-------------------	|-------------------	|--------------------------	|
 | Author +        	| Kingsley Chimezie 	| http://www.kingsley.tech 	|
 
-* __For more info on title definition: "mongodb-easy-install-windows/misc/title-rank-explained.md"__
+* __For more info on title definition: "mongodb-easy-install-windows/misc/title.md"__
 
 
 
