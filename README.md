@@ -5,7 +5,7 @@
 ### Automatically install, configure and set up a MongoDB environment on Windows OS (Windows 7 and above) machine. Using the "mongodb-easy-install-windows" batch (.bat) script. ##
 
 
----
+
 ## __Prerequisites__ ##
 * OS - Windows 7 and above
 * Internet access
@@ -13,7 +13,7 @@
 * mongodb-easy-install-windows tool
 
 
----
+
 ## __Instructions__ ##
 ### 1. Create a folder path of your choice, on your PC, where you want to install and setup MongoDB ###
 
@@ -56,19 +56,19 @@ Independently from __GitHubGist__
 * You can rename the "mongodb-easy-install-windows.bat" to whatever you like - this will not cause error.
 
 
----
+
 ## __License__ ##
 * MIT - Copyright (c) 2017 Kingsley Chimezie
 
 
----
+
 ## __Versions__ ##
 | Version No.   	| Release Date 	|
 |---------------	|--------------	|
 | 1.0 (current) 	| 2017-11-12   	|
 
 
----
+
 ## __Project People__ ##
 | Rank              	| Name                	| Website                  	|
 |-------------------	|-------------------	|--------------------------	|
@@ -97,12 +97,12 @@ Independently from __GitHubGist__
 | Read         | Can view project                         |
 
 
----
+
 ## __Acknowledgments__ ##
 * NULL
 
 
----
+
 ## __References__ ##
 * Install MongoDB Community Edition on Windows   
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
