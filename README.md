@@ -15,7 +15,7 @@
 
 
 ## __Instructions__ ##
-### YouTube Videos ###   
+### YouTube Videos ###
 | Description                                                                                                 | Link                         |
 |-------------------------------------------------------------------------------------------------------------|------------------------------|
 | MongoDB Easy Installation and Setup in 1 MINUTE! Free Tool for Windows - Part 1 - (Quick Demo)              | https://youtu.be/p2Tp9f4_MQk |
