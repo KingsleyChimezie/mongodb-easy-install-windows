@@ -69,18 +69,16 @@ https://www.mongodb.com/download-center?jmp=nav#community
 
 
 ## Versions
-| Version No.   	| Release Date 	|
-|---------------	|--------------	|
-| 1.0 (current) 	| 2017-11-12   	|
+- [Click here](https://bitbucket.org/kingsleymedia-team/mongodb-easy-install-windows/src/master/src)
 
 
 
 ## Project People
-| Title              	| Name                	| Website                  	|
-|-------------------	|-------------------	|--------------------------	|
-| Author +        	| Kingsley Chimezie 	| http://www.kingsley.tech 	|
+| Name                	|  Title              	|  Authority Level      | Website                  	|
+|-------------------	| -------------------	| -------------------	|--------------------------	|
+| Kingsley Chimezie 	|  Author +        	|  Admin +        	| http://www.kingsley.tech 	|
 
-For more info on title definition: "mongodb-easy-install-windows/misc/title.md"
+[Click here for **title** and **authority level** definitions.](https://bitbucket.org/kingsleymedia-team/kmp-repo-template/src/master/copy-this-and-use-as-repo/assets/title.md)
 
 
 
